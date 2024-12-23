@@ -31,7 +31,7 @@ public class Doctor {
     }
 
     public void treatPatient(Patient patient){
-        System.out.println("Doctor " + name + " is treating patient " + patient.getName() + patient.getDiagnosis());
+        System.out.println("Doctor " + name + " is treating patient " + patient.getName()+ " " + patient.getDiagnosis());
     }
 
     @Override

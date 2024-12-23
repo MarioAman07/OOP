@@ -4,7 +4,7 @@ import Assignment1.Hospital;
 public class Main {
     public static void main(String[] args) {
         //Creating hospital
-        Hospital hospital = new Hospital("Mediker","st. Zhumabeka Tashenova 20");
+        Hospital hospital = new Hospital("Mediker","st. Zhumabek Tashenov 20");
         //Creating doctors
         Doctor doctor1 = new Doctor("Asel", 32, "Neurologist");
         Doctor doctor2 = new Doctor("Aman", 34, "Cardiologist");
@@ -20,7 +20,21 @@ public class Main {
         hospital.addPatient(patient2);
 
         //output information
-        System.out.println(hospital);
+        System.out.println("Hospital name: " + hospital.getName());
+        System.out.println("Address: " + hospital.getAddress());
+
+        System.out.println("Doctors:");
+        for (Doctor doctor : hospital.getDoctors()) {
+            System.out.println("  " + doctor);  // Use toString method of Doctor
+        }
+
+        System.out.println("Patients:");
+        for (Patient patient : hospital.getPatients()) {
+            System.out.println("  " + patient);  // Use toString method of Patient
+        }
+
+        doctor1.treatPatient(patient1);
+        doctor2.treatPatient(patient2);
 
 
     }
