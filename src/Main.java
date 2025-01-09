@@ -1,41 +1,44 @@
 import Assignment1.Patient;
 import Assignment1.Doctor;
 import Assignment1.Hospital;
+
 public class Main {
     public static void main(String[] args) {
-        //Creating hospital
-        Hospital hospital = new Hospital("Mediker","st. Zhumabek Tashenov 20");
-        //Creating doctors
-        Doctor doctor1 = new Doctor("Asel", 32, "Neurologist");
-        Doctor doctor2 = new Doctor("Aman", 34, "Cardiologist");
+        // Create hospital
+        Hospital hospital = new Hospital("City Hospital");
 
-        //Creating patients
-        Patient patient1 = new Patient("Inkar", 23, "Migraine");
-        Patient patient2 = new Patient("Ernur", 24, "Heart Disease");
+        // Add patients
+        hospital.addPatient(new Patient(1, "Alice", 30, "Flu"));
+        hospital.addPatient(new Patient(2, "Bob", 45, "Broken Arm"));
+        hospital.addPatient(new Patient(3, "Charlie", 25, "Allergy"));
 
-        //Adding doctors and patients to the hospital
-        hospital.addDoctor(doctor1);
-        hospital.addDoctor(doctor2);
-        hospital.addPatient(patient1);
-        hospital.addPatient(patient2);
+        // Add doctors
+        hospital.addDoctor(new Doctor(1, "Dr. Smith", "Cardiology"));
+        hospital.addDoctor(new Doctor(2, "Dr. Brown", "Orthopedics"));
+        hospital.addDoctor(new Doctor(3, "Dr. Taylor", "Dermatology"));
 
-        //output information
-        System.out.println("Hospital name: " + hospital.getName());
-        System.out.println("Address: " + hospital.getAddress());
+        // Display all patients and doctors
+        System.out.println("All Patients:");
+        hospital.getPatients().forEach(System.out::println);
 
-        System.out.println("Doctors:");
-        for (Doctor doctor : hospital.getDoctors()) {
-            System.out.println("  " + doctor);  // Use toString method of Doctor
-        }
+        System.out.println("\nAll Doctors:");
+        hospital.getDoctors().forEach(System.out::println);
 
-        System.out.println("Patients:");
-        for (Patient patient : hospital.getPatients()) {
-            System.out.println("  " + patient);  // Use toString method of Patient
-        }
+        // Search patients by name
+        System.out.println("\nSearching for patient 'Alice':");
+        hospital.searchPatientsByName("Alice").forEach(System.out::println);
 
-        doctor1.treatPatient(patient1);
-        doctor2.treatPatient(patient2);
+        // Search doctors by specialty
+        System.out.println("\nSearching for doctors with specialty 'Orthopedics':");
+        hospital.searchDoctorsBySpecialty("Orthopedics").forEach(System.out::println);
 
+        // Sort patients by name and doctors by specialty
+        System.out.println("\nSorting patients by name:");
+        hospital.sortPatientsByName();
+        hospital.getPatients().forEach(System.out::println);
 
+        System.out.println("\nSorting doctors by specialty:");
+        hospital.sortDoctorsBySpecialty();
+        hospital.getDoctors().forEach(System.out::println);
     }
 }

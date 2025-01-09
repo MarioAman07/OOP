@@ -1,43 +1,24 @@
 package Assignment1;
 
-public class Doctor {
-    private String name;
-    private int age;
-    private String speciality;
 
-    public Doctor(String name, int age, String speciality){
-        this.name = name;
-        this.age = age;
-        this.speciality = speciality;
-    }
 
-    public String getName(){
-        return name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
-    public int getAge(){
-        return age;
-    }
-    public void setAge(int age){
-        this.age = age;
-    }
-    public String getSpeciality(){
-        return speciality;
-    }
-    public void setSpeciality(String speciality){
-        this.speciality = speciality;
+public class Doctor extends Person {
+    private String specialty;
+
+    // Constructor
+    public Doctor(int id, String name, String specialty) {
+        super(id, name);
+        this.specialty = specialty;
     }
 
-    public void treatPatient(Patient patient){
-        System.out.println("Doctor " + name + " is treating patient " + patient.getName()+ " for " + patient.getDiagnosis());
+    // Getter
+    public String getSpecialty() {
+        return specialty;
     }
 
+    // Overridden methods
     @Override
-    public String toString(){
-        return "Name: " + name + ", Age: " + age + ", Speciality: " + speciality;
-
+    public String toString() {
+        return String.format("Doctor{id=%d, name='%s', specialty='%s'}", getId(), getName(), specialty);
     }
-
 }
